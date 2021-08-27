@@ -9,7 +9,7 @@ In this exercise, you'll build two microservices that will contact over Google C
 You'll build two `gRPC` services, `auth-service` and `otp-service`. `auth-service` will publish message `SendOTP` on `verification` topic, and the `otp-service` will subscribe to the topic and will listen on the event.
 After consuming the event `otp-service` will use Twilio to send the otp.
 
-You'll build this service in `golang`.
+You'll build this service in `golang` and use GCP Cloud Pub/Sub for messaging.
 
 
 ### Auth Service
