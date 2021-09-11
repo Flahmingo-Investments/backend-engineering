@@ -55,3 +55,6 @@ https://www.twilio.com/docs/sms/api
 
 1. Tests
 2. Comments
+
+#Additional Instructions
+Makesure to fork the repo and send a PR
