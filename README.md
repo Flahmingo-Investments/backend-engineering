@@ -57,4 +57,5 @@ https://www.twilio.com/docs/sms/api
 2. Comments
 
 #Additional Instructions
-Makesure to fork the repo and send a PR
+
+- Makesure to fork the repo and send a PR ( if unsure check this https://medium.com/@rishabhmittal200/contributing-guide-when-you-fork-a-repository-3b97657b01fb)
