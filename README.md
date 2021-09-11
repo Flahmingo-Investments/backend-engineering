@@ -57,16 +57,15 @@ https://www.twilio.com/docs/sms/api
 2. Comments
 
 # How to contribute 
-
 Contributing
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
+In order to test end to end the way you handle code commits, pull request and documentation. Follow this instructions. 
 
-Fork the project
-Create your feature branch (git checkout -b feature/AmazingFeature)
-Make your changes
-Commit your changes (git commit -m 'Add some AmazingFeature')
-Push to the branch (git push origin feature/AmazingFeature)
-Open a pull request
+1. Fork the project
+2. Create your feature branch (git checkout -b feature/AmazingFeature)
+3. Make your changes
+4. Commit your changes (git commit -m 'Add some AmazingFeature')
+5. Push to the branch (git push origin feature/AmazingFeature)
+6. Open a pull request
 
 
 ## Additional Instructions
