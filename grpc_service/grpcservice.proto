@@ -1,0 +1,127 @@
+// Copyright 2015 gRPC authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+option go_package = "flahmingo/grpc/service";
+option java_multiple_files = true;
+option java_package = "flahmingo.grpc.service";
+option java_outer_classname = "GrpcServiceProto";
+
+package flahmingo.grpc.service;
+
+// The greeting service definition.
+service OTPService {
+  // Sends a greeting
+  rpc SendOTP (OTPRequest) returns (OTPResponse) {}
+}
+
+// The greeting service definition.
+service AuthService {
+  // Sends a greeting
+  rpc SignupWithPhoneNumber (SignupWithPhoneNumberRequest) returns (SignupWithPhoneNumberResponse) {}
+  rpc VerifyPhoneNumber (VerifyPhoneNumberRequest) returns (VerifyPhoneNumberResponse) {}
+  rpc LoginWithPhoneNumber (LoginWithPhoneNumberRequest) returns (LoginWithPhoneNumberResponse) {}
+  rpc ValidatePhoneNumberLogin (ValidatePhoneNumberLoginRequest) returns (ValidatePhoneNumberLoginResponse) {}
+  rpc GetProfile (GetProfileRequest) returns (GetProfileResponse) {}
+  rpc Logout (LogoutRequest) returns (LogoutResponse) {}
+}
+
+// The request message containing the phonenumber.
+// Later create two strings phoneNumber & msg to indicate Verification/Login
+message OTPRequest {
+  string phoneNumber = 1;
+}
+
+// The response message containing the responseCode/message
+message OTPResponse {
+  string message = 1;
+}
+
+// ----------------------------------------------
+
+// The request message format
+message SignupWithPhoneNumberRequest {
+  string name = 1;
+  string phoneNumber = 2;
+}
+// The response message format
+message SignupWithPhoneNumberResponse {
+  string message = 1;
+}
+
+// ----------------------------------------------
+
+// The request message format
+message VerifyPhoneNumberRequest {
+  string phoneNumber = 1;
+}
+
+// The response message format
+message VerifyPhoneNumberResponse {
+  string message = 1;
+}
+
+// ----------------------------------------------
+
+// The request message format
+message LoginWithPhoneNumberRequest {
+  string phoneNumber = 1;
+}
+
+// The response message format
+message LoginWithPhoneNumberResponse {
+  string message = 1;
+}
+
+// ----------------------------------------------
+
+// The request message format
+message ValidatePhoneNumberLoginRequest {
+  string phoneNumber = 1;
+  string otpCode = 2;
+}
+
+// The response message format
+message ValidatePhoneNumberLoginResponse {
+  string message = 1;
+}
+
+// ----------------------------------------------
+
+// The request message format
+message GetProfileRequest {
+  string phoneNumber = 1;
+}
+
+// The response message format
+message GetProfileResponse {
+  string message = 1;
+}
+
+// ----------------------------------------------
+
+// The request message format
+message LogoutRequest {
+  string phoneNumber = 1;
+}
+
+// The response message format
+message LogoutResponse {
+  string message = 1;
+}
+
+// ----------------------------------------------
+
+// END OF PROTO FILE

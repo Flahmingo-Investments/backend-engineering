@@ -1,5 +1,54 @@
 # Home work
 
+## How to run
+Add the following environment variables under ~/.profile
+Note the program needs these values to be in place for it to work
+| KEY  | VALUE |
+| ---  | ----- |
+| PATH | $PATH:/usr/local/go/bin |
+| TWILIO_ACCOUNT_SID | "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" |
+| TWILIO_ACCOUNT_AUTH_TOKEN | "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" |
+| TWILIO_FROM_PHONE_NUMBER | "+1DDDDDDDDDD" |
+| GOOGLE_APPLICATION_CREDENTIALS | "path/to/service/account/withPubSubPublisherSubscriberAccess.json" |
+
+### Load the variables
+~~~
+$ source ~/.profile
+~~~
+
+### Changing configuration details of google pub/sub
+Go to constants/constants.go file
+| KEY  | VALUE |
+| ---  | ----- |
+| PUBSUB_PROJECT_ID | ANY_VALID_PROJECT_ID_CREATED_IN_GCP |
+| PUBSUB_TOPIC | ANY_VALID_TOPIC_CREATED_IN_GCP |
+| PUBSUB_SUBSCRIPTION_ID | ANY_VALID_SUBSCRIPTION_ID_CREATED_FOR_OTP_SERVICE |
+
+### Running the servers
+~~~
+$ go run auth_service_server/main.go 
+$ go run otp_service_server/main.go 
+~~~
+
+### Running the clients
+~~~
+$ go run auth_service_client/main.go SignupWithPhoneNumber +1DDDDDDDDDD  Amar
+$ go run auth_service_client/main.go VerifyPhoneNumber +1DDDDDDDDDD  
+$ go run auth_service_client/main.go LoginWithPhoneNumber +1DDDDDDDDDD  
+$ go run auth_service_client/main.go ValidatePhoneNumberLogin +1DDDDDDDDDD  
+$ go run auth_service_client/main.go GetProfile +1DDDDDDDDDD  Amar
+$ go run auth_service_client/main.go Logout +1DDDDDDDDDD  Amar
+
+$ go run otp_service_client/main.go +1DDDDDDDDDD
+~~~
+
+### To regenerate grpc stubs after any change to proto file
+
+~~~
+$ protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative grpc_service/grpcservice.proto
+~~~
+
+
 ## What is it?
 
 In this exercise, you'll build two microservices that will contact over Google Cloud Pub/Sub. Below is a list of requirements and success criteria for your finished project.
