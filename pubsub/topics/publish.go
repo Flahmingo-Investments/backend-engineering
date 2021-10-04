@@ -3,7 +3,6 @@ package pubsub
 import (
 	"context"
 	"fmt"
-	"log"
 
 	"cloud.google.com/go/pubsub"
 )
@@ -21,7 +20,7 @@ func Publish(projectID, topicID, msg string) error {
 	result := t.Publish(ctx, &pubsub.Message{
 		Data: []byte(msg),
 	})
-	
+
 	id, err := result.Get(ctx)
 	if err != nil {
 		return fmt.Errorf("Get: %v", err)
@@ -29,4 +28,3 @@ func Publish(projectID, topicID, msg string) error {
 	fmt.Printf("Published a message; msg ID: %v\n", id)
 	return nil
 }
-

@@ -15,7 +15,7 @@ import (
 
 const (
 	address            = "localhost:50051"
-	defaultPhoneNumber = "+17789078225"
+	defaultPhoneNumber = "+1DDDDDDDDDD"
 )
 
 func main() {
