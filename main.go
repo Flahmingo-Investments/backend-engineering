@@ -15,8 +15,8 @@ import (
 )
 
 func requestOTP(phoneNumber string) {
-	accountSid := "AC45a3d4a27138a7f0ae6251f5d5592620"
-	authToken := "dae89325badabb48b9b5b0b86c183ac4"
+	accountSid := "REDACTED"
+	authToken := "REDACTED"
 
 	client := verify.NewClient(accountSid, authToken)
 
@@ -25,7 +25,7 @@ func requestOTP(phoneNumber string) {
 	fmt.Print(number)
 
 	_, err := client.NewVerification(
-		context.TODO(), "VAe7033960a73c8739a72eb3ccf8fdc200",
+		context.TODO(), "REDACTED",
 		&verify.VerificationInput{
 			To:      number,
 			Channel: verify.ChannelSMS,
@@ -37,15 +37,15 @@ func requestOTP(phoneNumber string) {
 
 }
 func verifyOTP(phoneNumber string, otp string) (valid bool) {
-	accountSid := "AC45a3d4a27138a7f0ae6251f5d5592620"
-	authToken := "dae89325badabb48b9b5b0b86c183ac4"
+	accountSid := "REDACTED"
+	authToken := "REDACTED"
 	number := "+1" + phoneNumber
 	fmt.Print(number)
 	valid = false
 
 	client := verify.NewClient(accountSid, authToken)
 	out, err := client.NewVerificationCheck(
-		context.TODO(), "VAe7033960a73c8739a72eb3ccf8fdc200",
+		context.TODO(), "REDACTED",
 		&verify.VerificationCheckInput{
 			To:   number,
 			Code: otp,
