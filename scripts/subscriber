@@ -1,0 +1,4 @@
+#!/bin/bash
+
+proto
+go run src/apps/otp/main/main.go

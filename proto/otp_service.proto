@@ -1,0 +1,11 @@
+syntax = "proto3";
+package proto;
+
+import "proto/commons.proto";
+
+option go_package = "/;proto";
+
+
+service OTPService{
+    rpc SendOTP(PhoneRequest) returns (GenericResponse) {}
+}

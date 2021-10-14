@@ -1,0 +1,21 @@
+syntax = "proto3";
+package proto;
+
+option go_package = "/;proto";
+
+enum Status {
+    UNKNOWN = 0;
+    ERROR = 1;
+    PENDING = 2;
+    SUCCESS = 3;
+    UNAUTHORIZED = 4;
+}
+
+message PhoneRequest {
+    string phone = 1;
+}
+
+message GenericResponse{
+    Status status = 1;
+    optional string detail = 2;
+}

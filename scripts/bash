@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export PATH="$PATH:/workspace/scripts:/workspace/e2e"
+export PROMPT_COMMAND='history -a'
+export HISTFILE=/history/.bash_history

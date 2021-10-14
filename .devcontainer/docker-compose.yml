@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  app:
+    env_file: .env
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      target: local
+
+    volumes:
+      - ..:/workspace:cached
+      - vscode1:/home/infinito/.vscode-server/extensions
+      - vscode2:/home/infinito/.vscode-server-insiders/extensions
+      - history:/history
+      - ~/.ssh:/home/infinito/.ssh
+    command: sleep infinity
+    ports:
+      - 5000:5000
+  
+  database:
+    image: postgres:9.6-alpine
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - localdb:/var/lib/postgresql/data
+
+volumes:
+  vscode1:
+  vscode2:
+  history:
+  localdb:
+

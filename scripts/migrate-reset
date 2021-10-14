@@ -1,0 +1,3 @@
+#!/bin/bash
+
+goose -dir migrations -table migrations reset

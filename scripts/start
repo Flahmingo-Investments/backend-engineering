@@ -1,0 +1,5 @@
+#!/bin/bash
+
+proto
+migrate
+go run src/apps/auth/main/main.go

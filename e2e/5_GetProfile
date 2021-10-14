@@ -1,0 +1,9 @@
+#!/bin/bash
+phone=$1
+
+json=$(cat e2e/e2e.temp |grep accessToken)
+grpcurl -proto ./proto/auth_service.proto -plaintext -d @ localhost:5000 proto.AuthService/GetProfile <<EOM
+{
+  $json
+}
+EOM

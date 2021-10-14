@@ -1,0 +1,8 @@
+#!/bin/bash
+phone=$1
+
+grpcurl -proto ./proto/auth_service.proto -plaintext -d @ localhost:5000 proto.AuthService/LoginWithPhoneNumber <<EOM
+{
+  "phone": "$phone"
+}
+EOM

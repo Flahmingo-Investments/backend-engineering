@@ -1,0 +1,17 @@
+#!/bin/bash
+otp=$1
+phone=$2
+
+function call(){
+  grpcurl -proto ./proto/auth_service.proto -plaintext \
+    -d @ localhost:5000 proto.AuthService/ValidatePhoneNumberLogin <<EOM
+      {
+        "phone": "$phone",
+        "otp": "$otp"
+      }
+EOM
+}
+
+call > e2e/e2e.temp
+cat e2e/e2e.temp
+

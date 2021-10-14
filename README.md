@@ -1,74 +1,112 @@
-# Home work
+# GO Grpc Advanced Example
 
-## What is it?
+This repo it's an advanced example of Golang microservice with GRPC, with the following capabilities:
 
-In this exercise, you'll build two microservices that will contact over Google Cloud Pub/Sub. Below is a list of requirements and success criteria for your finished project.
+- AuthService for handling signup, login, and get profile of the user
+- OTPService for sending SMS via Twilio API
+- JWT authentication
+- GCP Pub/Sub for communicating AuthService and OTPService
+- Database migrations using goose and postgresql
+- Unit and e2e tests
+- Using doppler for secret management
+- Advanced Vscode configuration with Remote Containers for having a fastest configuration
 
-## Requirements
+## Getting Started
 
-You'll build two `gRPC` services, `auth-service` and `otp-service`. `auth-service` will publish message `SendOTP` on `verification` topic, and the `otp-service` will subscribe to the topic and will listen on the event.
-After consuming the event `otp-service` will use Twilio to send the otp.
+- Install Docker
+- Install Vscode
+- Install Vscode [Remote Containers](https://code.visualstudio.com/docs/remote/containers-tutorial)
+- Create the file `.devcontainer/.env`
+- Clone and open the project with Remote Containers (see section below)
+- Pass to the end to end section!
 
-You'll build this service in `golang` and use GCP Cloud Pub/Sub for messaging.
+## End to End tests
 
+- On the terminal write the following messages
+- `start` for initializing the Auth Service
+- Optional `subscriber` for initializing the OTP Service
+- `1_SignupWithPhoneNumber Sergio +57012345789`
+- `2_VerifyPhoneNumber 4843 +57012345789`
+- `3_LoginFirstStep +57012345789`
+- `4_LoginSecondStep 9291 +57012345789`
+- `5_GetProfile`
 
-### Auth Service
+## Unit tests
 
-Create an auth service. This service will handle authentication and user profile.
+- Every service package has aside a test folder
+- The unit test are mocking external calls to database or API via mocking interfaces
 
-#### Create Account
-
-1. User should be able to create account using phone number.
-2. On successful account creation, publish a message on pubsub topic.
-3. User should be able to verify the account using the received otp.
-4. User should be able to login. By using otp.
-5. User should be able to logout.
-6. User should be able to get their profile.
-
-#### What to implement
-1. SignupWithPhoneNumber
-2. VerifyPhoneNumber
-3. LoginWithPhoneNumber
-4. ValidatePhoneNumberLogin
-5. GetProfile
-
-### OTP Service
-
-1. Will consume `SendOTP` event.
-2. Send OTP using Twilio.
-
-#### What to implement
-1. SendOTP
-
-# Resources
-
-## GCP Pub/Sub
-
-https://cloud.google.com/pubsub/docs/overview
-
-## Twilio
-
-https://www.twilio.com/docs/sms/api
+![Unit Tests](docs/unittest.png)
 
 
-# Bonus Points
+## Folder structure
 
-1. Tests
-2. Comments
+```
+.
+|-- README.md
+|-- docs
+|   `-- For adding more documentation
+|-- e2e
+|   `-- Scripts for making e2e tests (right now manually because OTP validation)
+|-- go.mod
+|-- go.sum
+|-- migrations
+|   `-- Migrations using goose with SQL
+|-- proto
+|   `-- Proto files for defining microservices contracts
+|-- scripts
+|   `-- Bash scripts for common tasks
+`-- src
+    |-- apps
+    |   `-- {{service}}
+    |       |-- main
+    |       |   `-- The main programn for executing the app
+    |       |-- services
+    |       |   `-- The implementation of the proto service
+    |       `-- tests
+    |           |-- mocks
+    |           |   `-- Mocks of the interface of external elements i.e. database, third party apis, etc
+    |           `-- Tests of the services
+    |-- commons
+    |   |-- services
+    |   |   |-- pubsub
+    |   |   |    `-- Service for pub sub
+    |   |   `-- jwt
+    |   |       `-- Service for create JWT tokens
+    |   |-- tests
+    |   |   `-- Test of the services
+    |   `-- utils
+    |-- data
+    |   |-- models
+    |   |   `-- Models used by the apps
+    |   `-- repositories
+    |       `-- Layer for accesing to the database and the models
+    `-- proto
+        `-- Auto generated folder
+```
 
-# How to contribute 
-Contributing
-In order to test end to end the way you handle code commits, pull request and documentation. Follow this instructions. 
 
-1. Fork the project
-2. Create your feature branch (git checkout -b feature/AmazingFeature)
-3. Make your changes
-4. Commit your changes (git commit -m 'Add some AmazingFeature')
-5. Push to the branch (git push origin feature/AmazingFeature)
-6. Open a pull request
+## Why using Remote Containers
+
+### Bash
+
+- The bash automatically imports the secrets from doppler
+- It keeps the user's historial
+- It has installed tools for development look `.devcontainer/Dockerfile:local`
+- You can run scripts present in `scripts/` and `e2e/`
+
+### Database
+
+- It adds a local database
+- It automatically installs a plugin for using the database with the connection ready
+
+![DB vscode](docs/rcdb.png)
+
+## Database Migrations
+
+1. Create a new migration `makemigration xxxx`
+2. For migrating use `migrate`
+3. For reset the database use `migrate-reset`
 
 
-## Additional Instructions
 
-
-- Makesure to fork the repo and send a PR ( if unsure check this https://medium.com/@rishabhmittal200/contributing-guide-when-you-fork-a-repository-3b97657b01fb)

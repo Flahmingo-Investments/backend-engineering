@@ -1,0 +1,4 @@
+#!/bin/bash
+
+name=$1
+goose -dir migrations -table migrations create $name sql

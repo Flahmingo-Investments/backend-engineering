@@ -1,0 +1,46 @@
+syntax = "proto3";
+package proto;
+
+import "proto/commons.proto";
+
+option go_package = "/;proto";
+
+message SignupRequest{
+    string name = 1;
+    string phone = 2;
+}
+
+message OTPValidationRequest {
+    string phone = 1;
+    string otp = 2;
+}
+
+message JWTResponse {
+    Status status = 1;
+    optional string refresh_token = 2;
+    optional string access_token = 3;
+    optional string detail = 4;
+}
+
+message ProfileRequest {
+    string access_token = 1;
+}
+
+message ProfileResponse {
+    Status status = 1;
+    string id =2;
+    string name = 3;
+    string phone = 4;
+    string created_at = 5;
+    string updated_at = 6;
+    bool verified = 7;
+    bool logged = 8;
+}
+
+service AuthService{
+    rpc SignupWithPhoneNumber(SignupRequest) returns (GenericResponse) {}
+    rpc VerifyPhoneNumber(OTPValidationRequest) returns (GenericResponse) {}
+    rpc LoginWithPhoneNumber(PhoneRequest) returns (GenericResponse) {}
+    rpc ValidatePhoneNumberLogin(OTPValidationRequest) returns (JWTResponse) {}
+    rpc GetProfile(ProfileRequest) returns (ProfileResponse) {}
+}
