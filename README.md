@@ -55,20 +55,3 @@ https://www.twilio.com/docs/sms/api
 
 1. Tests
 2. Comments
-
-# How to contribute 
-Contributing
-In order to test end to end the way you handle code commits, pull request and documentation. Follow this instructions. 
-
-1. Fork the project
-2. Create your feature branch (git checkout -b feature/AmazingFeature)
-3. Make your changes
-4. Commit your changes (git commit -m 'Add some AmazingFeature')
-5. Push to the branch (git push origin feature/AmazingFeature)
-6. Open a pull request
-
-
-## Additional Instructions
-
-
-- Makesure to fork the repo and send a PR ( if unsure check this https://medium.com/@rishabhmittal200/contributing-guide-when-you-fork-a-repository-3b97657b01fb)
