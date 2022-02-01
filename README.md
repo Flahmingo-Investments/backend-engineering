@@ -13,7 +13,6 @@ This skill test has three levels of completion which will be explained in the re
 
 
 ## Requirements
-___
 
 > ### General requirements
 
