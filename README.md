@@ -60,7 +60,7 @@ Implement and integrate a postgres database in which to save specific events occ
 > ### Level 3
 ___
 
-Integrate RabbitMQ message broker and integrate with services
+Integrate your choice of RabbitMQ, or GCP Pub/Sub message broker and integrate with services
 
 ### Auth Service
 
@@ -80,6 +80,11 @@ quickstart: https://grpc.io/docs/languages/go/quickstart/
 ### Twilio
 
 API docs: https://www.twilio.com/docs/sms/api
+
+
+### GCP Pub/Sub
+
+https://cloud.google.com/pubsub/docs/overview
 
 ### RabbitMQ
 
